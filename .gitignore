@@ -1,0 +1,8 @@
+# Hidden files
+*~
+
+# Project files
+
+## Kate
+.kateproject
+.kateproject.d/
