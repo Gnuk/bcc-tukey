@@ -38,7 +38,14 @@ class View{
 	*/
 	public function addCss($css)
 	{
-		$this->styles[] = $css;
+		if($css instanceof Css)
+		{
+			$this->styles[] = $css;
+		}
+		else
+		{
+			$this->styles[] = new Css($css);
+		}
 	}
 
 	/**
@@ -46,7 +53,14 @@ class View{
 	*/
 	public function addJs($js)
 	{
-		$this->scripts[] = $js;
+		if($js instanceof Js)
+		{
+			$this->scripts[] = $js;
+		}
+		else
+		{
+			$this->scripts[] = new Js($js);
+		}
 	}
 }
 ?>

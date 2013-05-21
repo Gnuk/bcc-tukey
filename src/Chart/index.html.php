@@ -4,7 +4,7 @@
 		<meta charset="utf-8"/>
 		<title>Charts</title>
 <?php foreach($this->styles as $css): ?>
-		<link rel="stylesheet" href="<?php echo $css ?>" type="text/css" media="screen">
+		<link rel="stylesheet" href="<?php echo $css->render() ?>" type="text/css" media="screen">
 <?php endforeach; ?>
 	</head>
 	<body>
@@ -93,8 +93,22 @@ vis.render();
 		<footer>
 			<p>Test des charts</p>
 		</footer>
-<?php foreach($this->scripts as $js): ?>
-		<script type="text/javascript" src="<?php echo $js ?>"></script>
-<?php endforeach; ?>
+<?php
+foreach($this->scripts as $js):
+	if($js->isIe()) :
+?>
+		<!--[if lte IE <?php echo $js->getIeMaxVersion() ?>]>
+<?php
+	endif;
+?>
+		<script type="text/javascript" src="<?php echo $js->render() ?>"></script>
+<?php
+	if($js->isIe()) :
+?>
+		<![endif]-->
+<?php
+	endif;
+endforeach;
+?>
 	</body>
 </html>

@@ -27,6 +27,8 @@ use \Gnkw\Prepare;
 	$chartView = new \Chart\View();
 	$chartView->addJs("js/protovis/protovis.min.js");
 	$chartView->addJs("js/data_protovis.js");
+	$chartView->addJs(new \Chart\Js("js/ample/runtime.js", 8));
+	$chartView->addJs(new \Chart\Js("js/ample/languages/svg/svg.js", 8));
 	$chartView->addCss("css/protovis.css");
 	$chartView->indexAction();
 ?>
